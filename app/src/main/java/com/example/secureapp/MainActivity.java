@@ -2,7 +2,10 @@ package com.example.secureapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,16 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button clickButton = (Button) findViewById(R.id.clickButton);
-        clickButton.setOnClickListener( new OnClickListener() {
+        Button clickButton = (Button) findViewById(R.id.start_button);
+        clickButton.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                Intent myIntent = new Intent(this, Connection.class);
+                Intent myIntent = new Intent(MainActivity.this, Connection.class);
                 //myIntent.putExtra("key", value); //Optional parameters
-                this.startActivity(myIntent);
+                MainActivity.this.startActivity(myIntent);
             }
         });
     }
