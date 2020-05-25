@@ -4,6 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".GestionLocal">
+
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/activity_title"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@color/backgroundColorMenu"
+            android:gravity="center"
+            android:text="Gestion du local"
+            android:textAlignment="center"
+            android:textColor="@color/fontColorMenu"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/local_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor"
+            android:text="Local :"
+            android:textColor="#3F3F3F"
+            android:textSize="24sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
