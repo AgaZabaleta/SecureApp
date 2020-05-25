@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Utilisateur"
-            android:textColor="@color/fontColor"
+            android:hint="Username"
+            android:textColorHint="@color/fontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="Username" />
+            android:autofillHints="login" />
 
         <EditText
             android:id="@+id/edit_password"
@@ -37,7 +37,8 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:textColor="@color/fontColor"
+            android:hint="Password"
+            android:textColorHint="@color/fontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

@@ -35,7 +35,7 @@ public class Connection extends AppCompatActivity {
                 Cursor c = mydatabase.query("User", null, "username=? AND password=?", selectArgs, null, null, null, null);
                 c.moveToFirst();
                 if(c.getCount()>0){
-                    String text = "Bienvenue " + c.getString(1);
+                    String text = "Welcome " + c.getString(0);
                     Toast toast = Toast.makeText(Connection.this, text, Toast.LENGTH_SHORT);
                     toast.show();
 

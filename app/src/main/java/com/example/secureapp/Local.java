@@ -1,7 +1,9 @@
 package com.example.secureapp;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,10 +26,10 @@ public class Local {
     public Local(Cursor c) {
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() > 0) {
-            this.name = c.getString(1);
-            this.historique = c.getString(2);
-            this.latitude = c.getDouble(3);
-            this.longitude = c.getDouble(4);
+            this.name = c.getString(0);
+            this.historique = c.getString(1);
+            this.latitude = c.getDouble(2);
+            this.longitude = c.getDouble(3);
 
         }
         //On ferme le cursor
@@ -53,8 +55,12 @@ public class Local {
         return "Local : " + getName();
     }
 
-    public void addUserHistorique(User user){
+    public void addUserHistorique(User user, SQLiteDatabase myDB){
         @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("EEE dd/MM/yyyy 'à' HH:mm:ss");
         historique += ";" + format.format(new Date()) + " || " + user.toString();
+        ContentValues cv = new ContentValues();
+        cv.put("historique", historique);
+
+        myDB.update("Local", cv, "name="+this.getName(), null);
     }
 }

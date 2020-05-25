@@ -18,11 +18,11 @@ class User {
     }
 
     public User(Cursor c) {
-        this.lastName = c.getString(1);
-        this.firstName = c.getString(2);
-        this.status = c.getString(3);
-        this.username = c.getString(4);
-        this.password = c.getString(5);
+        this.lastName = c.getString(0);
+        this.firstName = c.getString(1);
+        this.status = c.getString(2);
+        this.username = c.getString(3);
+        this.password = c.getString(4);
     }
 
     public String getLastName() {

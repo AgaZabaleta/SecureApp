@@ -36,14 +36,6 @@ public class ListeLocaux extends AppCompatActivity {
             locaux.add(new Local(c));
         }while (c.moveToNext());
 
-
-        Local l1 = new Local("Local 1", 43.629071, 3.86506);
-        Local l2 = new Local("Local 2", 43.61788740691996, 3.735627007421871);
-        Local l3 = new Local("Local 3", 43.5997404646501, 3.790215325292965);
-        locaux.add(l1);
-        locaux.add(l2);
-        locaux.add(l3);
-
         final ArrayAdapter<Local> arrayAdapter = new ArrayAdapter<Local>(this, android.R.layout.simple_list_item_1, locaux);
 
         lv.setAdapter(arrayAdapter);

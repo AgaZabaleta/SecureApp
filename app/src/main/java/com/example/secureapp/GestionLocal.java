@@ -27,6 +27,9 @@ public class GestionLocal extends AppCompatActivity {
         c.moveToFirst();
         Local local = new Local(c);
 
+        MyApplication app =(MyApplication)getApplication();
+        local.addUserHistorique(app.getCurrentUser(), mydatabase);
+
         TextView textView = (TextView) findViewById(R.id.local_name);
         textView.setText("Local : " + local.getName());
     }
