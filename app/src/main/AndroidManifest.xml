@@ -11,16 +11,17 @@
         <activity android:name=".ListeAlertes"></activity>
         <activity android:name=".GestionAlerte" />
         <activity android:name=".GestionLocal" />
-        <activity android:name=".ListeLocaux" />
         <activity android:name=".Options" />
         <activity android:name=".Connection" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ListeLocaux">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
