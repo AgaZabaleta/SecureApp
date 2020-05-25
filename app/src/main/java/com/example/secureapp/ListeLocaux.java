@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -56,5 +57,15 @@ public class ListeLocaux extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onClickToggleMenu(View view) {
+        LinearLayout l = findViewById(R.id.drop_menu);
+
+        if(l.getVisibility() == View.GONE) {
+            l.setVisibility(View.VISIBLE);
+        } else {
+            l.setVisibility(View.GONE);
+        }
     }
 }
