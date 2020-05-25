@@ -14,6 +14,7 @@
         android:layout_marginTop="157dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="SecureControl"
+        android:textColor="@color/fontColor"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,14 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="208dp"
+        android:background="@color/backgroundColorMenu"
         android:text="Start"
+        android:textColor="@color/fontColorMenu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/app_logo"
         android:layout_width="121dp"
         android:layout_height="127dp"
         android:layout_marginTop="31dp"
@@ -40,4 +43,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@android:drawable/ic_lock_lock" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
