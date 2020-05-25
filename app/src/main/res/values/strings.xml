@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">SecureApp</string>
+
+    <!-- Liste locaux -->
     <string name="titre_locaux">Liste des locaux</string>
+
+    <!-- Gestion local -->
+    <string name="gestion_du_local">Gestion du local</string>
+
+    <!-- Liste locaux -->
+
 </resources>

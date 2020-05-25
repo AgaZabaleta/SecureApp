@@ -19,7 +19,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="@color/fontColorMenu"
-            android:textSize="30dp"/>
+            android:textSize="20sp"/>
 
         <ListView
             android:id="@+id/listLocaux"

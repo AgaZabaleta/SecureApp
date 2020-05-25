@@ -22,17 +22,17 @@
             android:layout_height="60dp"
             android:background="@color/backgroundColorMenu"
             android:gravity="center"
-            android:text="Gestion du local"
+            android:text="@string/gestion_du_local"
             android:textAlignment="center"
             android:textColor="@color/fontColorMenu"
-            android:textSize="30dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/local_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/backgroundColor"
-            android:text="Local :"
+            android:text=""
             android:textColor="#3F3F3F"
             android:textSize="24sp" />
 
