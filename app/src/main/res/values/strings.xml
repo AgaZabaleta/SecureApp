@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SecureApp</string>
+    <string name="titre_locaux">Liste des locaux</string>
 </resources>

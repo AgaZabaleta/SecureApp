@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Contacts">
+    tools:context=".ListeLocaux">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="60dp"
-            android:text="Locaux"
+            android:text="@string/titre_locaux"
             android:background="@color/backgroundColorMenu"
             android:textAlignment="center"
             android:gravity="center"
@@ -22,8 +22,8 @@
             android:textSize="30dp"/>
 
         <ListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
+            android:id="@+id/list_locaux"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:background="@color/backgroundColor"
             android:textColor="@color/fontColor"
