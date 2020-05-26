@@ -135,34 +135,21 @@ public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback 
                     .position(new LatLng(local.getLatitude(), local.getLongitude()))
                     .title(local.getName()));
         }
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-    }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
-                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-
-                    Criteria crit = new Criteria();
-                    String provider = locationManager.getBestProvider(crit, true);
-
-                    assert locationManager != null;
-                    Location localisation = locationManager.getLastKnownLocation(provider);
-
-                    map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
-                }else {
-                    Toast.makeText(getActivity(), "Impossible d'afficher votre position", Toast.LENGTH_SHORT).show();
-                }
-                return;
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
         }
+
+        Criteria crit = new Criteria();
+        String provider = locationManager.getBestProvider(crit, true);
+
+        assert locationManager != null;
+        Location localisation = locationManager.getLastKnownLocation(provider);
+
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
     }
+
 
     @Override
     public void onResume() {

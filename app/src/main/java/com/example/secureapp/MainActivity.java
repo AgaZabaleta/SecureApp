@@ -1,11 +1,13 @@
 package com.example.secureapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -16,12 +18,15 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("database1",MODE_PRIVATE,null);
         mydatabase.execSQL("DROP TABLE IF EXISTS User;");
