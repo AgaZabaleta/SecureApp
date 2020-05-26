@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
                 Intent myIntent = new Intent(MainActivity.this, Connection.class);
                 //myIntent.putExtra("key", value); //Optional parameters
                 MainActivity.this.startActivity(myIntent);

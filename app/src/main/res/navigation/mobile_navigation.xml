@@ -20,5 +20,25 @@
         android:name="com.example.secureapp.FragmentLocal"
         android:label="Gestion du Local"
         tools:layout="@layout/fragment_local" />
+    <fragment
+        android:id="@+id/nav_options"
+        android:name="com.example.secureapp.FragmentOptions"
+        android:label="Options"
+        tools:layout="@layout/fragment_options" />
+    <fragment
+        android:id="@+id/nav_options_change_login"
+        android:name="com.example.secureapp.FragmentOptionsChangeLogin"
+        android:label="Option : Modifier mon login"
+        tools:layout="@layout/fragment_options_change_login" />
+    <fragment
+        android:id="@+id/nav_options_change_alert"
+        android:name="com.example.secureapp.FragmentOptionsChangeAlert"
+        android:label="Option : Modifier les alertes"
+        tools:layout="@layout/fragment_options_change_alert" />
+    <fragment
+        android:id="@+id/nav_options_add_user"
+        android:name="com.example.secureapp.FragmentOptionsAddUser"
+        android:label="Ajouter un utilisateur"
+        tools:layout="@layout/fragment_options_add_user" />
 
 </navigation>
