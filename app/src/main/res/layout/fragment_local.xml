@@ -37,10 +37,17 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginBottom="13dp" />
 
-            <VideoView
-                android:id="@+id/video_camera"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="200dp">
+
+                <VideoView
+                    android:id="@+id/video_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00FFFFFF"
+                    android:visibility="visible" />
+            </FrameLayout>
 
             <com.example.secureapp.FixedListView
                 android:id="@+id/local_history"

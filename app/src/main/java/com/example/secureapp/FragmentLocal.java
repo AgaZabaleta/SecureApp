@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -112,8 +113,13 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
         mapView.getMapAsync(FragmentLocal.this);
 
         VideoView camera = (VideoView) myFragmentView.findViewById(R.id.video_camera);
-        camera.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.camera_footage));
+        MediaController mediaController = new MediaController(getActivity());
+        camera.setMediaController(mediaController);
+        String uri = "android.resource://" + getActivity().getApplicationContext().getPackageName() + "/raw/" + R.raw.camera_footage;
+        System.out.println("URIIII " + uri);
+        camera.setVideoURI(Uri.parse(uri));
         camera.start();
+        camera.setZOrderOnTop(true);
 
         TextView textView = (TextView) myFragmentView.findViewById(R.id.local_name);
         textView.setText("Local : " + local.getName());
