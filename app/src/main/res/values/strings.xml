@@ -31,6 +31,7 @@
     <string name="button_change_login">Changer mes identifiants</string>
     <string name="button_change_alert_type">Modifier les alertes</string>
     <string name="button_add_user">Ajouter un utilisateur (Admin only)</string>
+    <string name="ajouter_un_local">Ajouter un local</string>
     <string-array name="status_array">
         <item>Utilisateur</item>
         <item>Admin</item>

@@ -1,11 +1,20 @@
 package com.example.secureapp;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -16,9 +25,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,10 +45,13 @@ import java.util.ArrayList;
  * Use the {@link FragmentListeLocaux#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentListeLocaux extends Fragment {
-
+public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback {
     private ArrayList<Local> locaux;
     private View myFragmentView;
+    SquareMapView mapView;
+    GoogleMap map;
+    User user;
+    Button addLocal;
 
     public FragmentListeLocaux() {
         // Required empty public constructor
@@ -48,14 +70,12 @@ public class FragmentListeLocaux extends Fragment {
         Activity ctx = getActivity();
 
         locaux = new ArrayList<Local>();
-        SQLiteDatabase mydatabase = ctx.openOrCreateDatabase("database1", ctx.MODE_PRIVATE,null);
+        SQLiteDatabase mydatabase = ctx.openOrCreateDatabase("database1", ctx.MODE_PRIVATE, null);
         Cursor c = mydatabase.query("Local", null, null, null, null, null, null, null);
         c.moveToFirst();
-        do{
+        do {
             locaux.add(new Local(c));
-        }while (c.moveToNext());
-
-
+        } while (c.moveToNext());
     }
 
     @Override
@@ -68,7 +88,7 @@ public class FragmentListeLocaux extends Fragment {
         final ArrayAdapter<Local> arrayAdapter = new ArrayAdapter<Local>(getActivity(), android.R.layout.simple_list_item_1, locaux);
         lv.setAdapter(arrayAdapter);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NavController navController = Navigation.findNavController(getView());
@@ -79,6 +99,82 @@ public class FragmentListeLocaux extends Fragment {
             }
         });
 
+        MyApplication app = (MyApplication) getActivity().getApplication();
+        user = app.getCurrentUser();
+
+        mapView = (SquareMapView) myFragmentView.findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(FragmentListeLocaux.this);
+
+        addLocal = (Button) myFragmentView.findViewById(R.id.add_local);
+
+        if(user.isAdmin()){
+            addLocal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.nav_add_local, new Bundle());
+                }
+            });
+        }else{
+            addLocal.setVisibility(View.GONE);
+        }
+
         return myFragmentView;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        map.setMinZoomPreference(10);
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        for (Local local : locaux) {
+            map.addMarker(new MarkerOptions()
+                    .position(new LatLng(local.getLatitude(), local.getLongitude()))
+                    .title(local.getName()));
+        }
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+
+                    assert locationManager != null;
+                    Location localisation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                    map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
+                }else {
+                    Toast.makeText(getActivity(), "Impossible d'afficher votre position", Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

@@ -46,7 +46,6 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
     private View myFragmentView;
     SquareMapView mapView;
     GoogleMap map;
-    private FusedLocationProviderClient fusedLocationClient;
 
     Local local;
     ArrayList<String> history;
@@ -136,7 +135,7 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
                 .position(new LatLng(local.getLatitude(), local.getLongitude()))
                 .title(local.getName()));
 
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
 
     @Override
