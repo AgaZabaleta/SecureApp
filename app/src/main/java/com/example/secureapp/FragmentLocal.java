@@ -31,7 +31,7 @@ import java.util.ArrayList;
  */
 public class FragmentLocal extends Fragment implements OnMapReadyCallback {
     private View myFragmentView;
-    MapView mapView;
+    SquareMapView mapView;
     GoogleMap map;
     Local local;
     ArrayList<String> history;
@@ -88,10 +88,11 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         myFragmentView = inflater.inflate(R.layout.fragment_local, container, false);
 
-        mapView = (MapView) myFragmentView.findViewById(R.id.mapView);
+        mapView = (SquareMapView) myFragmentView.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(FragmentLocal.this);
         //mapView.setLayoutParams(new LinearLayout.LayoutParams(500,500));
+
 
         TextView textView = (TextView) myFragmentView.findViewById(R.id.local_name);
         textView.setText("Local : " + local.getName());

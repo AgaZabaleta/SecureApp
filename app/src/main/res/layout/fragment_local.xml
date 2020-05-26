@@ -3,41 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".FragmentLocal">
 
-    <LinearLayout
-        android:id="@+id/menu_container"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/backgroundColor"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/local_name"
+        <LinearLayout
+            android:id="@+id/menu_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
-            android:gravity="center_horizontal"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="#3F3F3F"
-            android:textSize="20sp" />
+            android:background="#00D0D0D0"
+            android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/local_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
-            android:textColor="@color/fontColor"/>
+            <TextView
+                android:id="@+id/local_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#3F3F3F"
+                android:textSize="20sp" />
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="13dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginLeft="13dp"/>
-    </LinearLayout>
+            <com.example.secureapp.SquareMapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginBottom="13dp" />
+
+            <com.example.secureapp.FixedListView
+                android:id="@+id/local_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:textColor="@color/fontColor" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
