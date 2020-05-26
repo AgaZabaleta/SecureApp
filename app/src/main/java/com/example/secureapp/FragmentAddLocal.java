@@ -32,7 +32,7 @@ public class FragmentAddLocal extends Fragment {
     private View myFragmentView;
     private EditText nameEdit;
     private EditText addressEdit;
-    private EditText lonEdit;
+    private EditText telEdit;
     private Button saveButton;
 
     public FragmentAddLocal() {
@@ -66,8 +66,10 @@ public class FragmentAddLocal extends Fragment {
                 nameEdit = myFragmentView.findViewById(R.id.add_name);
                 addressEdit = myFragmentView.findViewById(R.id.add_address);
                 LatLng address = getLocationFromAddress(getActivity(), addressEdit.getText().toString());
+                telEdit = myFragmentView.findViewById(R.id.add_tel);
 
-                mydatabase.execSQL("INSERT INTO Local VALUES('" + nameEdit.getText().toString() + "', 'Historique : ', '" + address.latitude + "', '" + address.longitude +"');");
+
+                mydatabase.execSQL("INSERT INTO Local VALUES('" + nameEdit.getText().toString() + "', 'Historique : ', '" + address.latitude + "', '" + address.longitude +"', '" + telEdit.getText().toString() + "');");
                 Toast.makeText(getActivity(), "Local ajouté", Toast.LENGTH_SHORT).show();
 
                 NavController navController = Navigation.findNavController(getView());

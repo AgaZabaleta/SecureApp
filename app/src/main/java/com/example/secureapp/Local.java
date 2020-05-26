@@ -15,6 +15,7 @@ public class Local {
     private String history;
     private double latitude;
     private double longitude;
+    private String tel;
 
     public Local(String name, double latitude, double longitude) {
         this.name = name;
@@ -30,6 +31,7 @@ public class Local {
             this.history = c.getString(1);
             this.latitude = c.getDouble(2);
             this.longitude = c.getDouble(3);
+            this.tel = c.getString(4);
         }
     }
 
@@ -46,6 +48,10 @@ public class Local {
     public double getLongitude() {
         return longitude;
     }
+    public String getTel() {
+        return tel;
+    }
+
 
     @Override
     public String toString() {

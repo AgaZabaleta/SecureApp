@@ -48,6 +48,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_name" />
 
+        <EditText
+            android:id="@+id/add_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Téléphone du responsable"
+            android:textColorHint="@color/fontColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_address" />
+
         <Button
             android:id="@+id/button_save"
             android:layout_width="wrap_content"
@@ -59,7 +72,7 @@
             android:textColor="@color/fontColorMenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_address" />
+            app:layout_constraintTop_toBottomOf="@+id/add_tel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
