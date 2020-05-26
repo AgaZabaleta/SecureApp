@@ -150,8 +150,11 @@ public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback 
                         return;
                     }
 
+                    Criteria crit = new Criteria();
+                    String provider = locationManager.getBestProvider(crit, true);
+
                     assert locationManager != null;
-                    Location localisation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    Location localisation = locationManager.getLastKnownLocation(provider);
 
                     map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
                 }else {
