@@ -136,19 +136,25 @@ public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback 
                     .title(local.getName()));
         }
 
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
+        if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
 
-        Criteria crit = new Criteria();
-        String provider = locationManager.getBestProvider(crit, true);
+            Criteria crit = new Criteria();
+            String provider = locationManager.getBestProvider(crit, true);
 
-        assert locationManager != null;
-        Location localisation = locationManager.getLastKnownLocation(provider);
+            assert locationManager != null;
+            Location localisation = locationManager.getLastKnownLocation(provider);
 
-        if (localisation != null){
-            map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
+            if (localisation != null){
+                map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
+            }else{
+                map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(locaux.get(0).getLatitude(), locaux.get(0).getLongitude())));
+            }
+        }else{
+            map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(locaux.get(0).getLatitude(), locaux.get(0).getLongitude())));
         }
     }
 
