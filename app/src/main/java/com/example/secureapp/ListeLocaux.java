@@ -30,7 +30,7 @@ public class ListeLocaux extends AppCompatActivity {
         ArrayList<Local> locaux = new ArrayList<Local>();
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("database1",MODE_PRIVATE,null);
-        Cursor c = mydatabase.query("Locaux", null, null, null, null, null, null, null);
+        Cursor c = mydatabase.query("Local", null, null, null, null, null, null, null);
         c.moveToFirst();
         do{
             locaux.add(new Local(c));

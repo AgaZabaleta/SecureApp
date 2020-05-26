@@ -46,6 +46,6 @@ class User {
     }
 
     public String toString(){
-        return status + " " + firstName + " " + lastName;
+        return firstName + " " + lastName + " (" + status + ")";
     }
 }

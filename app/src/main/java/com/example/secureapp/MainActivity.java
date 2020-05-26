@@ -20,12 +20,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("database1",MODE_PRIVATE,null);
-        mydatabase.execSQL("DROP TABLE IF EXISTS Locaux;");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Locaux(name VARCHAR PRIMARY KEY, history VARCHAR, lat FLOAT, lon FLOAT);");
-        mydatabase.execSQL("INSERT INTO Locaux VALUES('poitiers', 'action:date;action:date', 0.0, 0.0);");
+        mydatabase.execSQL("DROP TABLE IF EXISTS Local;");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
+                "Local(name VARCHAR PRIMARY KEY," +
+                " history VARCHAR," +
+                " lat FLOAT," +
+                " lon FLOAT);");
+        mydatabase.execSQL("INSERT INTO Local VALUES('poitiers', 'History : ', 0.0, 0.0);");
 
         mydatabase.execSQL("DROP TABLE IF EXISTS User;");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS User(firstName VARCHAR, lastName VARCHAR, status VARCHAR, username VARCHAR PRIMARY KEY, password VARCHAR);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
+                "User(firstName VARCHAR," +
+                " lastName VARCHAR," +
+                " status VARCHAR," +
+                " username VARCHAR PRIMARY KEY," +
+                " password VARCHAR);");
         mydatabase.execSQL("INSERT INTO User VALUES('Bastian', 'Pouget', 'Admin', 'Baba', 'password');");
 
 

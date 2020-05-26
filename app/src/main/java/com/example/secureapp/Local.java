@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Local {
     private String name;
-    private String historique;
+    private String history;
     private double latitude;
     private double longitude;
 
@@ -20,28 +20,25 @@ public class Local {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.historique = "";
+        this.history = "History : ";
     }
 
     public Local(Cursor c) {
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() > 0) {
             this.name = c.getString(0);
-            this.historique = c.getString(1);
+            this.history = c.getString(1);
             this.latitude = c.getDouble(2);
             this.longitude = c.getDouble(3);
-
         }
-        //On ferme le cursor
-        c.close();
     }
 
 
     public String getName() {
         return name;
     }
-    public String getHistorique(){
-        return historique;
+    public String getHistory(){
+        return history;
     }
     public double getLatitude() {
         return latitude;
@@ -57,10 +54,10 @@ public class Local {
 
     public void addUserHistorique(User user, SQLiteDatabase myDB){
         @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("EEE dd/MM/yyyy 'à' HH:mm:ss");
-        historique += ";" + format.format(new Date()) + " || " + user.toString();
+        history += ";Consulté le : " + format.format(new Date()) + "\nPar : " + user.toString();
         ContentValues cv = new ContentValues();
-        cv.put("historique", historique);
-
-        myDB.update("Local", cv, "name="+this.getName(), null);
+        cv.put("history", history);
+        String[] arg = {this.getName()};
+        myDB.update("Local", cv, "name=?", arg);
     }
 }
