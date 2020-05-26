@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 " history VARCHAR," +
                 " lat FLOAT," +
                 " lon FLOAT);");
-        mydatabase.execSQL("INSERT INTO Local VALUES('poitiers', 'History : ', 0.0, 0.0);");
+        mydatabase.execSQL("INSERT INTO Local VALUES('Montpellier', 'History : ', 43.60960279713611, 3.874064942530673);");
 
         mydatabase.execSQL("DROP TABLE IF EXISTS User;");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +

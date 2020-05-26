@@ -103,7 +103,6 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
 
         ListView lv = myFragmentView.findViewById(R.id.local_history);
         if(user.isAdmin()){
-
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, history);
             lv.setAdapter(arrayAdapter);
         }else{
