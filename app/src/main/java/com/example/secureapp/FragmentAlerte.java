@@ -6,9 +6,12 @@ import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Camera;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,19 +19,15 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
-import org.w3c.dom.Text;
-
-import java.security.Policy;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +48,8 @@ public class FragmentAlerte extends Fragment  implements OnMapReadyCallback {
     Button callButton;
     Button defenseButton;
     Button desactiveButton;
+    private CameraManager mCameraManager;
+    Camera cam;
 
     public FragmentAlerte() {
         // Required empty public constructor
@@ -118,21 +119,7 @@ public class FragmentAlerte extends Fragment  implements OnMapReadyCallback {
             defenseButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean hasFlash = getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-                    if(hasFlash){
-                        try {
-                            Camera cam = null;
-                            cam = Camera.
-                        }
-                        catch (Exception e){
-                            // Camera is not available (in use or does not exist)
-                        }
-
-                        Policy.Parameters p = cam.
-                        p.setFlashMode(Parameters.FLASH_MODE_TORCH);
-                        cam.setParameters(p);
-                        cam.startPreview();
-                    }
+                    Toast.makeText(getActivity(), "Defense activée !", Toast.LENGTH_SHORT).show();
                 }
             });
         }else{

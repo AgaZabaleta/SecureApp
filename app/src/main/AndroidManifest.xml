@@ -7,6 +7,8 @@
     <permission android:name="android.permission.FLASHLIGHT"
         android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
         android:protectionLevel="normal" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera"  android:required="false"/>
     <application
         android:name=".MyApplication"
         android:allowBackup="true"

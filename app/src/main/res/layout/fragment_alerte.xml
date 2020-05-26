@@ -70,7 +70,7 @@
             android:layout_marginRight="13dp"
             android:layout_marginLeft="13dp"
             android:layout_above="@id/desactive_alarm"
-            android:text="Activer/désactiver le système de défense"
+            android:text="Activer le système de défense"
             android:textColor="@color/fontColorMenu"
             android:background="@color/backgroundColorMenu"/>
         <Button
@@ -80,7 +80,7 @@
             android:layout_marginBottom="13dp"
             android:layout_marginRight="13dp"
             android:layout_marginLeft="13dp"
-            android:text="Désactiver l'alarme"
+            android:text="Activer/désactiver l'alarme"
             android:textColor="@color/fontColorMenu"
             android:background="@color/backgroundColorMenu"/>
     </RelativeLayout>
