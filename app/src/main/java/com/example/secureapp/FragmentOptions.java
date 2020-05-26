@@ -62,8 +62,14 @@ public class FragmentOptions extends Fragment {
         addUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.nav_options_add_user, new Bundle());
+                MyApplication app = (MyApplication) getActivity().getApplication();
+                User user = app.getCurrentUser();
+                if(user.isAdmin()) {
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.nav_options_add_user, new Bundle());
+                }else{
+                    Toast.makeText(getActivity(), "Vous n'avais pas les autorisations nécessaires", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

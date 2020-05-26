@@ -45,6 +45,10 @@ class User {
         return password;
     }
 
+    public boolean isAdmin(){
+        return status.equals("Admin");
+    }
+
     public String toString(){
         return firstName + " " + lastName + " (" + status + ")";
     }
