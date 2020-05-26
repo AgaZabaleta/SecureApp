@@ -7,6 +7,9 @@
     <!-- Gestion local -->
     <string name="gestion_du_local">Gestion du local</string>
 
-    <!-- Liste locaux -->
+    <!-- Liste alerte -->
+    <string name="titre_alerte">Liste des alertes</string>
 
+    <!-- Gestion alerte -->
+    <string name="gestion_dune_alerte">Gestion d\'une alerte</string>
 </resources>

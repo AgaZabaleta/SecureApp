@@ -49,7 +49,7 @@ public class Connection extends AppCompatActivity {
                     toast.show();
                     MyApplication app =(MyApplication)getApplication();
                     app.setCurrentUser(new User("Admin", "Admin", "Admin", "Admin", "Admin"));
-                    Intent myIntent = new Intent(Connection.this, ListeLocaux.class);
+                    Intent myIntent = new Intent(Connection.this, ListeAlertes.class);
                     Connection.this.startActivity(myIntent);
                 }
             }

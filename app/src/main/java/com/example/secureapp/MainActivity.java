@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -36,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 " username VARCHAR PRIMARY KEY," +
                 " password VARCHAR);");
         mydatabase.execSQL("INSERT INTO User VALUES('Bastian', 'Pouget', 'Admin', 'Baba', 'password');");
+
+        mydatabase.execSQL("DROP TABLE IF EXISTS Alerte;");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
+                "Alerte(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                " date VARCHAR);");
+        SimpleDateFormat format = new SimpleDateFormat("EEE dd/MM/yyyy 'à' HH:mm:ss");
+        String str_date = format.format(new Date());
+        mydatabase.execSQL("INSERT INTO Alerte(date) VALUES('" + str_date + "');");
 
 
         Button clickButton = (Button) findViewById(R.id.start_button);
