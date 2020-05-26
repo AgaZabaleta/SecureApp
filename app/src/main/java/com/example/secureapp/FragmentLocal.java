@@ -63,24 +63,25 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
         c.close();
 
         MyApplication app =(MyApplication) ctx.getApplication();
-        local.addUserHistorique(app.getCurrentUser(), mydatabase);
+        User user = app.getCurrentUser();
+        local.addUserHistorique(user, mydatabase);
 
         history = new ArrayList<String>();
 
-        String[] column = {"history"};
-        String[] selectArg = {local.getName()};
-        Cursor c2 = mydatabase.query("Local", column, "name=?", selectArg, null, null, null, null);
-        c2.moveToFirst();
-        //System.out.println(c2.getCount());
+        if(user.isAdmin()){
+            String[] column = {"history"};
+            String[] selectArg = {local.getName()};
+            Cursor c2 = mydatabase.query("Local", column, "name=?", selectArg, null, null, null, null);
+            c2.moveToFirst();
+            //System.out.println(c2.getCount());
 
-        String raw_history = c2.getString(0);
-        c2.close();
-        String[] array_history = raw_history.split(";");
-        for(int i=0 ; i<array_history.length ; i++){
-            history.add(array_history[i]);
+            String raw_history = c2.getString(0);
+            c2.close();
+            String[] array_history = raw_history.split(";");
+            for(int i=0 ; i<array_history.length ; i++){
+                history.add(array_history[i]);
+            }
         }
-
-
     }
 
     @Override
@@ -97,9 +98,18 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
         TextView textView = (TextView) myFragmentView.findViewById(R.id.local_name);
         textView.setText("Local : " + local.getName());
 
+        MyApplication app =(MyApplication) getActivity().getApplication();
+        User user = app.getCurrentUser();
+
         ListView lv = myFragmentView.findViewById(R.id.local_history);
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, history);
-        lv.setAdapter(arrayAdapter);
+        if(user.isAdmin()){
+
+            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, history);
+            lv.setAdapter(arrayAdapter);
+        }else{
+            lv.setVisibility(View.GONE);
+        }
+
         return myFragmentView;
     }
 
