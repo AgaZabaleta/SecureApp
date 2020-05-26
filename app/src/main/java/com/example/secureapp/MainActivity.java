@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("database1",MODE_PRIVATE,null);
         mydatabase.execSQL("DROP TABLE IF EXISTS User;");

@@ -9,8 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -135,22 +137,11 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
                 .position(new LatLng(local.getLatitude(), local.getLongitude()))
                 .title(local.getName()));
 
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    map.getUiSettings().setMyLocationButtonEnabled(false);
-                    map.setMyLocationEnabled(true);
-                }else {
-                    Toast.makeText(getActivity(), "Impossible d'afficher votre position", Toast.LENGTH_SHORT).show();
-                }
-                return;
+        if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            map.getUiSettings().setMyLocationButtonEnabled(false);
+            map.setMyLocationEnabled(true);
+        }else{
+            Toast.makeText(getActivity(), "Impossible d'afficher votre position", Toast.LENGTH_SHORT).show();
         }
     }
 
