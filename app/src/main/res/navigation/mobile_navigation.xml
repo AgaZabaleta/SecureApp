@@ -46,9 +46,15 @@
         android:label="Déconnexion"
         tools:layout="@layout/fragment_deconnect" />
     <fragment
+        android:id="@+id/nav_alerte"
+        android:name="com.example.secureapp.FragmentAlerte"
+        android:label="Gestion de l'alerte"
+        tools:layout="@layout/fragment_alerte" />
+    <fragment
         android:id="@+id/nav_add_local"
         android:name="com.example.secureapp.FragmentAddLocal"
         android:label="Ajouter un local"
         tools:layout="@layout/fragment_add_local" />
+
 
 </navigation>

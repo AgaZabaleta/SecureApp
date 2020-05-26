@@ -45,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
         mydatabase.execSQL("DROP TABLE IF EXISTS Alerte;");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
                 "Alerte(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                " date VARCHAR);");
+                "local VARCHAR," +
+                "state INTEGER," +
+                "date VARCHAR);");
         SimpleDateFormat format = new SimpleDateFormat("EEE dd/MM/yyyy 'à' HH:mm:ss");
         String str_date = format.format(new Date());
-        mydatabase.execSQL("INSERT INTO Alerte(date) VALUES('" + str_date + "');");
+        mydatabase.execSQL("INSERT INTO Alerte(local, state, date) VALUES('Montpellier', 1, '" + str_date + "');");
 
 
         Button clickButton = (Button) findViewById(R.id.start_button);
