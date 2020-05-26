@@ -47,10 +47,10 @@ public class Connection extends AppCompatActivity {
                     String text = "Username or password incorrect";
                     Toast toast = Toast.makeText(Connection.this, text, Toast.LENGTH_LONG);
                     toast.show();
-                    MyApplication app =(MyApplication)getApplication();
-                    app.setCurrentUser(new User("Admin", "Admin", "Admin", "Admin", "Admin"));
-                    Intent myIntent = new Intent(Connection.this, DrawerMain.class);
-                    Connection.this.startActivity(myIntent);
+                    //MyApplication app =(MyApplication)getApplication();
+                    //app.setCurrentUser(new User("Admin", "Admin", "Admin", "Admin", "Admin"));
+                    //Intent myIntent = new Intent(Connection.this, DrawerMain.class);
+                    //Connection.this.startActivity(myIntent);
                 }
             }
         });
