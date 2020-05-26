@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_liste_locaux"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_place_black_24dp"
             android:title="Mes locaux" />
         <item
             android:id="@+id/nav_liste_alertes"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_error_outline_black_24dp"
             android:title="Alertes" />
         <item
             android:id="@+id/nav_options"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_build_black_24dp"
             android:title="Options" />
         <item
             android:id="@+id/nav_deconnect"
