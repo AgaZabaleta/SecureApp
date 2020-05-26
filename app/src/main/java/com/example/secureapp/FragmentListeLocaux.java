@@ -72,8 +72,10 @@ public class FragmentListeLocaux extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.nav_local, new Bundle());
                 Local item = arrayAdapter.getItem(position);
+                Bundle args = new Bundle();
+                args.putString("local", item.getName());
+                navController.navigate(R.id.nav_local, args);
             }
         });
 
