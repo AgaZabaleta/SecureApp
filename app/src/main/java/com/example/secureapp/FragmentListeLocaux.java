@@ -73,6 +73,7 @@ public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback 
         SQLiteDatabase mydatabase = ctx.openOrCreateDatabase("database1", ctx.MODE_PRIVATE, null);
         Cursor c = mydatabase.query("Local", null, null, null, null, null, null, null);
         c.moveToFirst();
+
         do {
             locaux.add(new Local(c));
         } while (c.moveToNext());

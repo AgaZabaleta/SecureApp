@@ -24,14 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SQLiteDatabase mydatabase = openOrCreateDatabase("database1",MODE_PRIVATE,null);
-        mydatabase.execSQL("DROP TABLE IF EXISTS Local;");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
-                "Local(name VARCHAR PRIMARY KEY," +
-                " history VARCHAR," +
-                " lat FLOAT," +
-                " lon FLOAT);");
-        mydatabase.execSQL("INSERT INTO Local VALUES('Montpellier', 'History : ', 43.60960279713611, 3.874064942530673);");
-
         mydatabase.execSQL("DROP TABLE IF EXISTS User;");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
                 "User(firstName VARCHAR," +
@@ -40,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
                 " username VARCHAR PRIMARY KEY," +
                 " password VARCHAR);");
         mydatabase.execSQL("INSERT INTO User VALUES('Bastian', 'Pouget', 'Admin', 'Baba', 'password');");
+
+        mydatabase.execSQL("DROP TABLE IF EXISTS Local;");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
+                "Local(name VARCHAR PRIMARY KEY," +
+                " history VARCHAR," +
+                " lat FLOAT," +
+                " lon FLOAT, " +
+                " tel VARCHAR);");
+        mydatabase.execSQL("INSERT INTO Local VALUES('Montpellier', 'History : ', 43.60960279713611, 3.874064942530673, '060000000');");
 
         mydatabase.execSQL("DROP TABLE IF EXISTS Alerte;");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
