@@ -2,25 +2,39 @@ package com.example.secureapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
-public class GestionLocal extends AppCompatActivity {
-
+public class GestionLocal extends AppCompatActivity implements OnMapReadyCallback {
+    MapView mapView;
+    GoogleMap map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_local);
+
+        mapView = (MapView)findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(GestionLocal.this);
+        //mapView.setLayoutParams(new LinearLayout.LayoutParams(500,500));
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("local");
@@ -57,5 +71,45 @@ public class GestionLocal extends AppCompatActivity {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, history);
 
         lv.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        GoogleMap map = googleMap;
+        map.setMinZoomPreference(12);
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.7143528, -74.0059731)));
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+    @Override
+    protected void onPause() {
+        mapView.onPause();
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy() {
+        mapView.onDestroy();
+        super.onDestroy();
+    }
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }
