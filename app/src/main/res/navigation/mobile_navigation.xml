@@ -45,5 +45,10 @@
         android:name="com.example.secureapp.FragmentDeconnect"
         android:label="Déconnexion"
         tools:layout="@layout/fragment_deconnect" />
+    <fragment
+        android:id="@+id/nav_alerte"
+        android:name="com.example.secureapp.FragmentAlerte"
+        android:label="Gestion de l'alerte"
+        tools:layout="@layout/fragment_alerte" />
 
 </navigation>
