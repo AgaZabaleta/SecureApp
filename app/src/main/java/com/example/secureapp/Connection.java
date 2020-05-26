@@ -41,7 +41,7 @@ public class Connection extends AppCompatActivity {
 
                     MyApplication app =(MyApplication)getApplication();
                     app.setCurrentUser(new User(c));
-                    Intent myIntent = new Intent(Connection.this, ListeLocaux.class);
+                    Intent myIntent = new Intent(Connection.this, DrawerMain.class);
                     Connection.this.startActivity(myIntent);
                 }else{
                     String text = "Username or password incorrect";

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".FragmentOptions">
+
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/change_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:text="@string/button_change_login"
+            android:textColorHint="@color/fontColor"
+            android:background="@color/backgroundColor"/>
+
+        <Button
+            android:id="@+id/change_alert_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:text="@string/button_change_alert_type"
+            android:textColorHint="@color/fontColor"
+            android:background="@color/backgroundColor"/>
+
+        <Button
+            android:id="@+id/add_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:text="@string/button_add_user"
+            android:textColorHint="@color/fontColor"
+            android:background="@color/backgroundColor"/>
+    </LinearLayout>
+
+</FrameLayout>
