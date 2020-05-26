@@ -3,10 +3,12 @@ package com.example.secureapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Camera;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -105,7 +107,11 @@ public class FragmentAlerte extends Fragment  implements OnMapReadyCallback {
             callButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    SQLiteDatabase mydatabase = getActivity().openOrCreateDatabase("database1", getActivity().MODE_PRIVATE,null);
+                    Cursor c = mydatabase.query("Local", new String[] {"tel"}, "name = ?", new String[] {alerte.getLocal()}, null, null, null, null);
+                    c.moveToFirst();
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", c.getString(0), null));
+                    startActivity(intent);
                 }
             });
         }else{
