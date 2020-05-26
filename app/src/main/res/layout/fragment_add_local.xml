@@ -22,15 +22,16 @@
             android:id="@+id/add_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="login"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Nom du local"
+            android:inputType="textPersonName"
+            android:textColor="@color/fontColor"
             android:textColorHint="@color/fontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="login" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/add_address"
@@ -40,6 +41,7 @@
             android:ems="10"
             android:hint="n° rue, ville (ou code)"
             android:inputType="textPostalAddress"
+            android:textColor="@color/fontColor"
             android:textColorHint="@color/fontColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
