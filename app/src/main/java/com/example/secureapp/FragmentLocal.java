@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationProvider;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -107,6 +109,9 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(FragmentLocal.this);
 
+        VideoView camera = (VideoView) myFragmentView.findViewById(R.id.video_camera);
+        camera.setVideoURI(Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.camera_footage));
+        camera.start();
 
         TextView textView = (TextView) myFragmentView.findViewById(R.id.local_name);
         textView.setText("Local : " + local.getName());
