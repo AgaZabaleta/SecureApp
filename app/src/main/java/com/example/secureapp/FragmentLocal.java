@@ -116,7 +116,7 @@ public class FragmentLocal extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         GoogleMap map = googleMap;
         map.setMinZoomPreference(7);
-        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.7143528, -74.0059731)));
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(local.getLatitude(), local.getLongitude())));
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
     @Override
