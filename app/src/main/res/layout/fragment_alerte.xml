@@ -44,6 +44,44 @@
             android:id="@+id/alerte_map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/call_responsable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_above="@id/trigger_defense"
+            android:text="Appeler le responsable"
+            android:textColor="@color/fontColorMenu"
+            android:background="@color/backgroundColorMenu"/>
+        <Button
+            android:id="@+id/trigger_defense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_above="@id/desactive_alarm"
+            android:text="Activer/désactiver le système de défense"
+            android:textColor="@color/fontColorMenu"
+            android:background="@color/backgroundColorMenu"/>
+        <Button
+            android:id="@+id/desactive_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:text="Désactiver l'alarme"
+            android:textColor="@color/fontColorMenu"
+            android:background="@color/backgroundColorMenu"/>
+    </RelativeLayout>
 </FrameLayout>

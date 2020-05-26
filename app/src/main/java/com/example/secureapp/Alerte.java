@@ -58,4 +58,12 @@ public class Alerte {
         @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("EEE dd/MM/yyyy 'à' HH:mm:ss");
         return "Alerte " + id + " à " + local + " : " + format.format(date);
     }
+
+    public int changeState() {
+        if(state == 1){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
 }
