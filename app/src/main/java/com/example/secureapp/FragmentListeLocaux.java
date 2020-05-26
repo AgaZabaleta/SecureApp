@@ -147,7 +147,9 @@ public class FragmentListeLocaux extends Fragment implements OnMapReadyCallback 
         assert locationManager != null;
         Location localisation = locationManager.getLastKnownLocation(provider);
 
-        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
+        if (localisation != null){
+            map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localisation.getLatitude(), localisation.getLongitude())));
+        }
     }
 
 
