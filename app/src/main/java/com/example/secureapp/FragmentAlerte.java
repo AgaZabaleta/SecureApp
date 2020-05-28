@@ -47,8 +47,6 @@ public class FragmentAlerte extends Fragment  implements OnMapReadyCallback {
     Button callButton;
     Button defenseButton;
     Button desactiveButton;
-    private CameraManager mCameraManager;
-    Camera cam;
 
     public FragmentAlerte() {
         // Required empty public constructor
